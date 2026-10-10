@@ -1,4 +1,4 @@
-![NX1 Reborn](res/nx1-reborn-logo.png)
+![NX1 Reborn](res/nx1-reborn-logo.svg)
 
 # NX1 Reborn
 
