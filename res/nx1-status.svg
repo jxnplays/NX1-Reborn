@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 60" width="920" height="60">
-  <rect width="920" height="60" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 40" width="720" height="40">
+  <rect width="720" height="40" fill="#0d1117"/>
   <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">
-    <rect x="40" y="16" width="68" height="26" fill="#5a5a5a"/>
-    <text x="74" y="34" fill="#fff">NX1 SP</text>
-    <rect x="112" y="16" width="84" height="26" fill="#f0c014"/>
-    <text x="154" y="34" fill="#111">BOOTABLE</text>
-    <rect x="200" y="16" width="68" height="26" fill="#5a5a5a"/>
-    <text x="234" y="34" fill="#fff">NX1 MP</text>
-    <rect x="272" y="16" width="76" height="26" fill="#c9a227"/>
-    <text x="310" y="34" fill="#111">NETPLAY</text>
-    <rect x="352" y="16" width="56" height="26" fill="#5a5a5a"/>
-    <text x="380" y="34" fill="#fff">MAPS</text>
-    <rect x="412" y="16" width="100" height="26" fill="#a8a832"/>
-    <text x="462" y="34" fill="#111">15 LOADABLE</text>
-    <rect x="516" y="16" width="80" height="26" fill="#5a5a5a"/>
-    <text x="556" y="34" fill="#fff">RENDERER</text>
-    <rect x="600" y="16" width="60" height="26" fill="#111" stroke="#333"/>
-    <text x="630" y="34" fill="#fff">D3D9</text>
+    <rect x="0" y="6" width="68" height="26" fill="#4a4a4a"/>
+    <text x="34" y="24" fill="#fff">NX1 SP</text>
+    <rect x="72" y="6" width="84" height="26" fill="#d4a017"/>
+    <text x="114" y="24" fill="#111">BOOTABLE</text>
+    <rect x="160" y="6" width="68" height="26" fill="#4a4a4a"/>
+    <text x="194" y="24" fill="#fff">NX1 MP</text>
+    <rect x="232" y="6" width="76" height="26" fill="#8b7355"/>
+    <text x="270" y="24" fill="#fff">NETPLAY</text>
+    <rect x="312" y="6" width="56" height="26" fill="#4a4a4a"/>
+    <text x="340" y="24" fill="#fff">MAPS</text>
+    <rect x="372" y="6" width="100" height="26" fill="#6b8e23"/>
+    <text x="422" y="24" fill="#fff">15 LOADABLE</text>
+    <rect x="476" y="6" width="80" height="26" fill="#4a4a4a"/>
+    <text x="516" y="24" fill="#fff">RENDERER</text>
+    <rect x="560" y="6" width="60" height="26" fill="#111" stroke="#333"/>
+    <text x="590" y="24" fill="#fff">D3D9</text>
   </g>
 </svg>
