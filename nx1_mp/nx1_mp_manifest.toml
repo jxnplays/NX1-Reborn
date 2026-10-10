@@ -8,4 +8,4 @@ game_root = "../nx1"
 [entrypoint]
 file_path = "../nx1/5-nx1mp_demo.xex"
 out_directory_path = "generated/5-nx1mp_demo"
-includes = ["config/ida_functions.toml"]
+includes = ["config/ida_functions.toml", "config/hooks.toml"]
