@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 40" width="720" height="40">
-  <rect width="720" height="40" fill="#0d1117"/>
-  <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" text-anchor="middle">
-    <rect x="0" y="6" width="68" height="26" fill="#1e3a5f"/>
-    <text x="34" y="24" fill="#fff">NX1 SP</text>
-    <rect x="72" y="6" width="84" height="26" fill="#0ea5e9"/>
-    <text x="114" y="24" fill="#fff">BOOTABLE</text>
-    <rect x="160" y="6" width="68" height="26" fill="#1e3a5f"/>
-    <text x="194" y="24" fill="#fff">NX1 MP</text>
-    <rect x="232" y="6" width="76" height="26" fill="#0284c7"/>
-    <text x="270" y="24" fill="#fff">NETPLAY</text>
-    <rect x="312" y="6" width="56" height="26" fill="#1e3a5f"/>
-    <text x="340" y="24" fill="#fff">MAPS</text>
-    <rect x="372" y="6" width="100" height="26" fill="#0369a1"/>
-    <text x="422" y="24" fill="#fff">15 LOADABLE</text>
-    <rect x="476" y="6" width="80" height="26" fill="#1e3a5f"/>
-    <text x="516" y="24" fill="#fff">RENDERER</text>
-    <rect x="560" y="6" width="60" height="26" fill="#0c4a6e"/>
-    <text x="590" y="24" fill="#fff">D3D9</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 50" width="900" height="50">
+  <rect width="900" height="50" fill="#0d1117"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+    <rect x="0" y="8" width="80" height="34" fill="#1e3a5f"/>
+    <text x="40" y="30" fill="#fff">NX1 SP</text>
+    <rect x="84" y="8" width="100" height="34" fill="#0ea5e9"/>
+    <text x="134" y="30" fill="#fff">BOOTABLE</text>
+    <rect x="188" y="8" width="80" height="34" fill="#1e3a5f"/>
+    <text x="228" y="30" fill="#fff">NX1 MP</text>
+    <rect x="272" y="8" width="90" height="34" fill="#0284c7"/>
+    <text x="317" y="30" fill="#fff">NETPLAY</text>
+    <rect x="366" y="8" width="70" height="34" fill="#1e3a5f"/>
+    <text x="401" y="30" fill="#fff">MAPS</text>
+    <rect x="440" y="8" width="120" height="34" fill="#0369a1"/>
+    <text x="500" y="30" fill="#fff">15 LOADABLE</text>
+    <rect x="564" y="8" width="100" height="34" fill="#1e3a5f"/>
+    <text x="614" y="30" fill="#fff">RENDERER</text>
+    <rect x="668" y="8" width="72" height="34" fill="#0c4a6e"/>
+    <text x="704" y="30" fill="#fff">D3D9</text>
   </g>
 </svg>
