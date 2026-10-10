@@ -6,33 +6,38 @@ A static recompilation of **Call of Duty: Future Warfare** (NX1) into native Win
 
 PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders are converted to HLSL and run on a real GPU driver. This is a maintained fork of [NX1recomp](https://github.com/goshavindtburg/NX1recomp) with local work on netplay, a native D3D9 path, shader cache, and supporting tooling.
 
-![Status](res/nx1-status.svg)
+<p align="center">
+  <img src="res/nx1-status.svg" width="800">
+</p>
 
 ---
 
-## Required game files
+## Progress
 
-The recomp requires the **Internet Archive v1.1.1.14** build of Call of Duty: Future Warfare.
-
-Earlier or incomplete dumps are missing bulk data for several maps. Place the files from that build in the `nx1/` folder before building or running. This repository does not contain game code or assets.
-
----
-
-## What this is
-
-NX1 Reborn takes the cancelled 2011 Neversoft prototype and produces native Windows binaries. The recompilation harness, runtime, and local modifications live here. The game itself does not.
-
-- **`nx1/`** — your game dump (`.xex` + assets). Not in the repo.
-- **`generated/`** — C++ emitted by ReXGlue from the PowerPC code. Not in the repo.
-- **`thirdparty/`** — vendored trees. Gitignored; restore from upstream commit `e8ce24f` before building.
+| Area | Status | Notes |
+| --- | --- | --- |
+| Single-player (`nx1_sp`) | Bootable | ReXGlue graphics + developer overlay |
+| Multiplayer (`nx1_mp`) | Bootable | Native D3D9 renderer |
+| Netplay | Working | Client stutter fixed (v0.9) |
+| Maps (`.ff`) | 15 loadable | Real bulk half present |
+| Maps (`.ffm` only) | 12 invisible | Runtime has no `.ff` → `.ffm` fallback |
+| Shader cache | Native | SM3 transform + `fxc` backend |
+| Discord presence | Present | Requires Discord Social SDK |
 
 ---
 
-## Current status
+## Missing files
 
-Maps that exist as `.ff` (not `.ffm`) can load without crashing. 15 maps have a real `.ff` bulk half and are loadable. 12 maps exist only as `.ffm` and are currently invisible to the runtime, which has no `.ff` → `.ffm` fallback.
+This repository does not contain the game or its build dependencies. You must supply:
 
-The multiplayer target uses a native D3D9 renderer and has working netplay. The single-player target uses the ReXGlue graphics backend with a developer overlay.
+| Path | What it is | Where to get it |
+| --- | --- | --- |
+| `nx1/` | Game dump (`.xex` + assets) | Internet Archive v1.1.1.14 build |
+| `generated/` | C++ from ReXGlue | Run ReXGlue against your dump |
+| `thirdparty/` | Vendored trees | Restore from upstream commit `e8ce24f` |
+| Discord SDK | Rich presence | Discord Social SDK |
+
+Earlier or incomplete dumps are missing bulk data for several maps. Place the files from the v1.1.1.14 build in `nx1/` before building or running.
 
 ---
 
@@ -43,8 +48,6 @@ Requires CMake and Clang 20.1.8 (MSVC ABI). Each target is a standalone CMake pr
 **Restore `thirdparty/` before building.** Those trees are gitignored. They are not fully recoverable from the committed `.gitmodules` — 11 non-submodule vendored trees plus the aggregator `CMakeLists.txt` must be obtained from upstream commit `e8ce24f`.
 
 You also need a game dump in `nx1/` and must run ReXGlue to produce `generated/`.
-
-Discord Social SDK is required for rich presence.
 
 ---
 
@@ -60,6 +63,16 @@ res/              Icon and logo
 ```
 
 `rexglue-sdk` and `XenosRecomp` are modified forks. Local work includes the netplay stack, native shader cache, Discord presence, debug HUD, and mouse-look on the SDK side; and the Shader Model 3 transform plus an `fxc` compiler backend on the XenosRecomp side.
+
+---
+
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for scope and constraints.
+
+- Runtime fixes, netplay improvements, and renderer work are in scope.
+- Do not commit game code, assets, or generated C++.
+- Include the target, dump version, and logs when reporting issues.
 
 ---
 
