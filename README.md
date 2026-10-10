@@ -6,10 +6,7 @@ A static recompilation of **Call of Duty: Future Warfare** (NX1) into native Win
 
 PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders are converted to HLSL and run on a real GPU driver. This is a maintained fork of [NX1recomp](https://github.com/goshavindtburg/NX1recomp) with local work on netplay, a native D3D9 path, shader cache, and supporting tooling.
 
-| Target | Backend | Status |
-| --- | --- |
-| `nx1_sp` | ReXGlue graphics + developer overlay | Bootable |
-| `nx1_mp` | Native D3D9 + working netplay | Bootable |
+![Status](res/nx1-status.svg)
 
 ---
 
