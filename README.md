@@ -1,3 +1,5 @@
+![NX1 Reborn](res/nx1-reborn-logo.png)
+
 # NX1 Reborn
 
 A static recompilation of **Call of Duty: Future Warfare** (NX1) into native Windows executables. PowerPC code is translated ahead of time into C++ and compiled; Xenos shaders are converted to HLSL and run on a real GPU driver. This is a maintained fork of [NX1recomp](https://github.com/goshavindtburg/NX1recomp).
