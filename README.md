@@ -88,6 +88,20 @@ Their respective licenses apply to the vendored copies.
 
 ---
 
+## Legal Disclaimer
+
+This repository contains **only** the recompilation harness, runtime glue, and local modifications. It does **not** contain any game code, assets, textures, models, sound, or other copyrighted material from Call of Duty: Future Warfare or any other title.
+
+You must legally obtain your own dump of the original game. This project is not affiliated with, endorsed by, or sponsored by Activision, Treyarch, or any rights holder. All trademarks and copyrights remain the property of their respective owners.
+
+Use of this software is at your own risk. The authors provide no warranty and accept no liability for any damages, legal consequences, or other issues arising from its use.
+
+---
+
 ## License
 
-This repository contains only the recompilation harness and local modifications. Game code and assets are not included. See the licenses of the vendored projects for their terms.
+The recompilation harness and local modifications in this repository are licensed under the [MIT License](LICENSE).
+
+Vendored third-party components (ReXGlue, XenosRecomp, and their dependencies) retain their original licenses. See the respective directories for details.
+
+Game code and assets are **not** included and are not licensed by this project.
