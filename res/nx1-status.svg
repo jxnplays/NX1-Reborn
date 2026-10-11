@@ -17,6 +17,5 @@
     <text x="549" y="30" fill="#fff">RECOMP</text>
     <rect x="598" y="8" width="64" height="34" fill="#0c4a6e"/>
     <text x="630" y="30" fill="#fff">D3D9</text>
-    <rect x="666" y="8" width="80" height="34" fill="#0ea5e9"/>
   </g>
 </svg>
