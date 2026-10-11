@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" width="1000" height="50">
-  <rect width="1000" height="50" fill="#0d1117"/>
-  <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
-    <rect x="0" y="8" width="80" height="34" fill="#1e3a5f"/>
-    <text x="40" y="30" fill="#fff">NX1 SP</text>
-    <rect x="84" y="8" width="100" height="34" fill="#0ea5e9"/>
-    <text x="134" y="30" fill="#fff">BOOTABLE</text>
-    <rect x="188" y="8" width="80" height="34" fill="#1e3a5f"/>
-    <text x="228" y="30" fill="#fff">NX1 MP</text>
-    <rect x="272" y="8" width="90" height="34" fill="#0284c7"/>
-    <text x="317" y="30" fill="#fff">NETPLAY</text>
-    <rect x="366" y="8" width="70" height="34" fill="#1e3a5f"/>
-    <text x="401" y="30" fill="#fff">MAPS</text>
-    <rect x="440" y="8" width="120" height="34" fill="#0369a1"/>
-    <text x="500" y="30" fill="#fff">15 LOADABLE</text>
-    <rect x="564" y="8" width="100" height="34" fill="#1e3a5f"/>
-    <text x="614" y="30" fill="#fff">RENDERER</text>
-    <rect x="668" y="8" width="72" height="34" fill="#0c4a6e"/>
-    <text x="704" y="30" fill="#fff">D3D9</text>
-    <rect x="744" y="8" width="90" height="34" fill="#0ea5e9"/>
-    <text x="789" y="30" fill="#fff">RECOMP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 50" width="900" height="50">
+  <rect width="900" height="50" fill="#0d1117"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+    <rect x="0" y="8" width="70" height="34" fill="#1e3a5f"/>
+    <text x="35" y="30" fill="#fff">NX1 SP</text>
+    <rect x="74" y="8" width="90" height="34" fill="#0ea5e9"/>
+    <text x="119" y="30" fill="#fff">BOOTABLE</text>
+    <rect x="168" y="8" width="70" height="34" fill="#1e3a5f"/>
+    <text x="203" y="30" fill="#fff">NX1 MP</text>
+    <rect x="242" y="8" width="80" height="34" fill="#0284c7"/>
+    <text x="282" y="30" fill="#fff">NETPLAY</text>
+    <rect x="326" y="8" width="60" height="34" fill="#1e3a5f"/>
+    <text x="356" y="30" fill="#fff">MAPS</text>
+    <rect x="390" y="8" width="110" height="34" fill="#0369a1"/>
+    <text x="445" y="30" fill="#fff">15 LOADABLE</text>
+    <rect x="504" y="8" width="90" height="34" fill="#1e3a5f"/>
+    <text x="549" y="30" fill="#fff">RENDERER</text>
+    <rect x="598" y="8" width="64" height="34" fill="#0c4a6e"/>
+    <text x="630" y="30" fill="#fff">D3D9</text>
+    <rect x="666" y="8" width="80" height="34" fill="#0ea5e9"/>
+    <text x="706" y="30" fill="#fff">RECOMP</text>
   </g>
 </svg>
