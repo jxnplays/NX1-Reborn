@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 50" width="900" height="50">
-  <rect width="900" height="50" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" width="1000" height="50">
+  <rect width="1000" height="50" fill="#0d1117"/>
   <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
     <rect x="0" y="8" width="80" height="34" fill="#1e3a5f"/>
     <text x="40" y="30" fill="#fff">NX1 SP</text>
@@ -17,5 +17,7 @@
     <text x="614" y="30" fill="#fff">RENDERER</text>
     <rect x="668" y="8" width="72" height="34" fill="#0c4a6e"/>
     <text x="704" y="30" fill="#fff">D3D9</text>
+    <rect x="744" y="8" width="90" height="34" fill="#0ea5e9"/>
+    <text x="789" y="30" fill="#fff">RECOMP</text>
   </g>
 </svg>
