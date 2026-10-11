@@ -96,7 +96,7 @@ Their respective licenses apply to the vendored copies.
 
 This repository contains **only** the recompilation harness, runtime glue, and local modifications. It does **not** contain any game code, assets, textures, models, sound, or other copyrighted material from Call of Duty: Future Warfare or any other title.
 
-You must legally obtain your own dump of the original game. This project is not affiliated with, endorsed by, or sponsored by Activision, Treyarch, or any rights holder. All trademarks and copyrights remain the property of their respective owners.
+You must legally obtain your own dump of the original game. This project is not affiliated with, endorsed by, or sponsored by Activision, Neversoft, or any rights holder. All trademarks and copyrights remain the property of their respective owners.
 
 Use of this software is at your own risk. The authors provide no warranty and accept no liability for any damages, legal consequences, or other issues arising from its use.
 
