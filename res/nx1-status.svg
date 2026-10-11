@@ -14,10 +14,9 @@
     <rect x="390" y="8" width="110" height="34" fill="#0369a1"/>
     <text x="445" y="30" fill="#fff">15 LOADABLE</text>
     <rect x="504" y="8" width="90" height="34" fill="#1e3a5f"/>
-    <text x="549" y="30" fill="#fff">RENDERER</text>
+    <text x="549" y="30" fill="#fff">RECOMP</text>
     <rect x="598" y="8" width="64" height="34" fill="#0c4a6e"/>
     <text x="630" y="30" fill="#fff">D3D9</text>
     <rect x="666" y="8" width="80" height="34" fill="#0ea5e9"/>
-    <text x="706" y="30" fill="#fff">RECOMP</text>
   </g>
 </svg>
