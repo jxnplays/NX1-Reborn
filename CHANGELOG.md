@@ -1,11 +1,22 @@
 # Changelog
 
+## 2026-10-11
+
+### Docs & Public readiness
+- Added MIT License covering the recompilation harness.
+- Added Legal Disclaimer section to the README.
+- Added Code of Conduct and Security Policy.
+- Polished README with badges and clearer structure.
+- Purged unrelated NX1 fastfile session notes from history.
+- Expanded CONTRIBUTING.md.
+
 ## 2026-10-10
 
 ### Docs
 - Rewrote the README for public release.
 - Added project logo.
 - Clarified required dump version and thirdparty restore step.
+- Added status bar.
 
 ## v0.9 — 2026-07-11
 
