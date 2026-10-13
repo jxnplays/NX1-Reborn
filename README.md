@@ -28,7 +28,17 @@ PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders ar
 | Shader cache | Native | SM3 transform + `fxc` backend |
 | Discord presence | Present | Requires Discord Social SDK |
 
+
 ---
+
+## Current state
+
+A user with an extracted ISO **cannot** currently clone this repository and build a playable binary. Two required pieces are not present and cannot be generated from the files in this repo:
+
+- `generated/` — C++ produced by ReXGlue from your dump. You must run ReXGlue yourself.
+- `thirdparty/` — vendored dependency trees. These are gitignored. They are not recoverable from the committed `.gitmodules` files. The last known source is upstream commit `e8ce24f` of the original NX1recomp repository; that commit is not part of this fork.
+
+Until those are available, CMake will fail. This is the current state of the project.
 
 ## Missing files
 
