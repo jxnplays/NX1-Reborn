@@ -47,11 +47,42 @@ Earlier or incomplete dumps are missing bulk data for several maps. Place the fi
 
 ## Building
 
-Requires CMake and Clang 20.1.8 (MSVC ABI). Each target is a standalone CMake project. Builds land in `out/build/win-amd64-release/`.
+This is not a one-command build. You need three things before CMake will succeed:
 
-**Restore `thirdparty/` before building.** Those trees are gitignored. They are not fully recoverable from the committed `.gitmodules` — 11 non-submodule vendored trees plus the aggregator `CMakeLists.txt` must be obtained from upstream commit `e8ce24f`.
+1. **Game dump** in `nx1/` (your extracted ISO or the Internet Archive v1.1.1.14 files).
+2. **Generated C++** in `generated/` (produced by running ReXGlue against the dump).
+3. **Vendored third-party trees** in `thirdparty/` (gitignored; restore from upstream).
 
-You also need a game dump in `nx1/` and must run ReXGlue to produce `generated/`.
+### Prerequisites
+
+- Windows
+- CMake 3.25+
+- Clang 20.1.8 (MSVC ABI) — the project is configured for this toolchain
+- A full NX1 dump (`.xex` + asset files)
+
+### Steps
+
+1. Clone the repo and enter it:
+   ```
+   git clone https://github.com/jxnplays/NX1-Reborn.git
+   cd NX1-Reborn
+   ```
+
+2. Place your dump in `nx1/`. The expected layout is the raw dump contents (not a nested folder).
+
+3. Restore `thirdparty/`. Those trees are not in this repository. Obtain them from upstream commit `e8ce24f` of [NX1recomp](https://github.com/goshavindtburg/NX1recomp) and place the resulting `thirdparty/` folder at the repo root. Without this step the build will fail.
+
+4. Run ReXGlue against your dump to produce `generated/`. The SDK is vendored under `rexglue-sdk/`. Follow the ReXGlue documentation for generating the C++ from your `.xex`.
+
+5. Configure and build the multiplayer target:
+   ```
+   cmake -S nx1_mp -B out/build/win-amd64-release -G Ninja -DCMAKE_BUILD_TYPE=Release
+   cmake --build out/build/win-amd64-release
+   ```
+
+The single-player target (`nx1_sp`) follows the same pattern.
+
+Builds land in `out/build/win-amd64-release/`. Discord rich presence is optional and requires the Discord Social SDK in a `Discord SDK/` folder at the repo root.
 
 ---
 
