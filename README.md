@@ -36,7 +36,7 @@ PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders ar
 A user with an extracted ISO **cannot** currently clone this repository and build a playable binary. Two required pieces are not present and cannot be generated from the files in this repo:
 
 - `generated/` — C++ produced by ReXGlue from your dump. You must run ReXGlue yourself.
-- `thirdparty/` — vendored dependency trees. These are gitignored. They are not recoverable from the committed `.gitmodules` files. The last known source is upstream commit `e8ce24f` of the original NX1recomp repository; that commit is not part of this fork.
+- `thirdparty/` — vendored dependency trees. These are gitignored. They are not recoverable from the committed `.gitmodules` files. The last known source is upstream commit `the committed .gitmodules files` of the original NX1recomp repository; that commit is not part of this fork.
 
 Until those are available, CMake will fail. This is the current state of the project.
 
@@ -48,7 +48,7 @@ This repository does not contain the game or its build dependencies. You must su
 | --- | --- | --- |
 | `nx1/` | Game dump (`.xex` + assets) | Internet Archive v1.1.1.14 build |
 | `generated/` | C++ from ReXGlue | Run ReXGlue against your dump |
-| `thirdparty/` | Vendored trees | Restore from upstream commit `e8ce24f` |
+| `thirdparty/` | Vendored trees | Restore from upstream commit `the committed .gitmodules files` |
 | Discord SDK | Rich presence | Discord Social SDK |
 
 Earlier or incomplete dumps are missing bulk data for several maps. Place the files from the v1.1.1.14 build in `nx1/` before building or running.
@@ -61,7 +61,7 @@ This is not a one-command build. You need three things before CMake will succeed
 
 1. **Game dump** in `nx1/` (your extracted ISO or the Internet Archive v1.1.1.14 files).
 2. **Generated C++** in `generated/` (produced by running ReXGlue against the dump).
-3. **Vendored third-party trees** in `thirdparty/` (gitignored; restore from upstream).
+3. **Vendored third-party trees** in `thirdparty/` (gitignored; restore via `git submodule update --init --recursive` from the committed `.gitmodules`).
 
 ### Prerequisites
 
@@ -80,7 +80,15 @@ This is not a one-command build. You need three things before CMake will succeed
 
 2. Place your dump in `nx1/`. The expected layout is the raw dump contents (not a nested folder).
 
-3. Restore `thirdparty/`. Those trees are not in this repository. Obtain them from upstream commit `e8ce24f` of [NX1recomp](https://github.com/goshavindtburg/NX1recomp) and place the resulting `thirdparty/` folder at the repo root. Without this step the build will fail.
+3. Initialize thirdparty submodules. The URLs and commits are recorded in the committed `.gitmodules` files:
+   ```
+   git submodule update --init --recursive
+   ```
+   If needed, initialize from the vendored projects:
+   ```
+   cd rexglue-sdk && git submodule update --init --recursive && cd ..
+   cd XenosRecomp && git submodule update --init --recursive && cd ..
+   ```
 
 4. Run ReXGlue against your dump to produce `generated/`. The SDK is vendored under `rexglue-sdk/`. Follow the ReXGlue documentation for generating the C++ from your `.xex`.
 
