@@ -33,12 +33,12 @@ PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders ar
 
 ## Current state
 
-A user with an extracted ISO **cannot** currently clone this repository and build a playable binary. Two required pieces are not present and cannot be generated from the files in this repo:
+A user with an extracted ISO can build and run this project. The required steps are:
 
-- `generated/` — C++ produced by ReXGlue from your dump. You must run ReXGlue yourself.
-- `thirdparty/` — vendored dependency trees. These are gitignored. They are not recoverable from the committed `.gitmodules` files. The last known source is upstream commit `the committed .gitmodules files` of the original NX1recomp repository; that commit is not part of this fork.
-
-Until those are available, CMake will fail. This is the current state of the project.
+1. Place the dump contents in `nx1/`.
+2. Initialize the `thirdparty/` submodules from the committed `.gitmodules` files in `rexglue-sdk/` and `XenosRecomp/`.
+3. Run ReXGlue against the dump to produce `generated/`.
+4. Configure and build with CMake.
 
 ## Missing files
 
@@ -48,7 +48,7 @@ This repository does not contain the game or its build dependencies. You must su
 | --- | --- | --- |
 | `nx1/` | Game dump (`.xex` + assets) | Internet Archive v1.1.1.14 build |
 | `generated/` | C++ from ReXGlue | Run ReXGlue against your dump |
-| `thirdparty/` | Vendored trees | Restore from upstream commit `the committed .gitmodules files` |
+| `thirdparty/` | Vendored trees | Restore via `git submodule update --init --recursive` |
 | Discord SDK | Rich presence | Discord Social SDK |
 
 Earlier or incomplete dumps are missing bulk data for several maps. Place the files from the v1.1.1.14 build in `nx1/` before building or running.
