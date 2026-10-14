@@ -42,6 +42,7 @@ set(NX1MP_SOURCES
     src/d3d9/d3d9_resources.cpp
     src/d3d9/d3d9_shaders.cpp
     src/d3d9/guest_d3d.cpp
+    src/d3d9/nx1_overlay.cpp
 )
 
 # Shader Model 3.0 cache for the native D3D9 renderer, emitted by
