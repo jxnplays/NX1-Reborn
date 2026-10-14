@@ -43,6 +43,8 @@ set(NX1MP_SOURCES
     src/d3d9/d3d9_shaders.cpp
     src/d3d9/guest_d3d.cpp
     src/d3d9/nx1_overlay.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../rexglue-sdk/thirdparty/imgui/backends/imgui_impl_win32.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../rexglue-sdk/thirdparty/imgui/backends/imgui_impl_dx9.cpp
 )
 
 # Shader Model 3.0 cache for the native D3D9 renderer, emitted by
@@ -74,6 +76,9 @@ if(WIN32)
     # backend uses, so the two caches stay in lockstep.
     target_link_libraries(nx1_mp PRIVATE d3d9 d3dcompiler xxHash::xxhash)
     target_include_directories(nx1_mp PRIVATE "${CMAKE_CURRENT_LIST_DIR}/src/d3d9")
+    target_include_directories(nx1_mp PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}/../rexglue-sdk/thirdparty/imgui"
+        "${CMAKE_CURRENT_LIST_DIR}/../rexglue-sdk/thirdparty/imgui/backends")
     if(NX1MP_HAVE_SM3_SHADER_CACHE)
         target_compile_definitions(nx1_mp PRIVATE NX1_HAVE_SM3_SHADER_CACHE)
         target_link_libraries(nx1_mp PRIVATE libzstd_static)
