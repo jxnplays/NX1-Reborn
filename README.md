@@ -6,6 +6,16 @@
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)]()
 [![Status](https://img.shields.io/badge/status-active-brightgreen)]()
 
+## Legal Disclaimer
+
+This repository contains **only** the recompilation harness, runtime glue, and local modifications. It does **not** contain any game code, assets, textures, models, sound, or other copyrighted material from Call of Duty: Future Warfare or any other title.
+
+You must legally obtain your own dump of the original game. This project is not affiliated with, endorsed by, or sponsored by Activision, Neversoft, or any rights holder. All trademarks and copyrights remain the property of their respective owners.
+
+Use of this software is at your own risk. The authors provide no warranty and accept no liability for any damages, legal consequences, or other issues arising from its use.
+
+---
+
 A static recompilation of **Call of Duty: Future Warfare** (NX1) into native Windows executables.
 
 PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders are converted to HLSL and run on a real GPU driver. This is a maintained fork of [NX1recomp](https://github.com/goshavindtburg/NX1recomp) with local work on netplay, a native D3D9 path, shader cache, and supporting tooling.
@@ -27,7 +37,6 @@ PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders ar
 | Maps (`.ffm` only) | 12 invisible | Runtime has no `.ff` → `.ffm` fallback |
 | Shader cache | Native | SM3 transform + `fxc` backend |
 | Discord presence | Present | Requires Discord Social SDK |
-
 
 ---
 
@@ -138,16 +147,6 @@ Built on the work of others:
 - **Xenia** — foundation for the above
 
 Their respective licenses apply to the vendored copies.
-
----
-
-## Legal Disclaimer
-
-This repository contains **only** the recompilation harness, runtime glue, and local modifications. It does **not** contain any game code, assets, textures, models, sound, or other copyrighted material from Call of Duty: Future Warfare or any other title.
-
-You must legally obtain your own dump of the original game. This project is not affiliated with, endorsed by, or sponsored by Activision, Neversoft, or any rights holder. All trademarks and copyrights remain the property of their respective owners.
-
-Use of this software is at your own risk. The authors provide no warranty and accept no liability for any damages, legal consequences, or other issues arising from its use.
 
 ---
 
