@@ -33,12 +33,8 @@ PowerPC code is translated ahead of time into C++ and compiled. Xenos shaders ar
 
 ## Current state
 
-A user with an extracted ISO can build and run this project. The required steps are:
-
-1. Place the dump contents in `nx1/`.
-2. Initialize the `thirdparty/` submodules from the committed `.gitmodules` files in `rexglue-sdk/` and `XenosRecomp/`.
-3. Run ReXGlue against the dump to produce `generated/`.
-4. Configure and build with CMake.
+With a dump in `nx1/` and `thirdparty/` restored, this project builds and runs on Windows. The
+exact sequence is below — it is what has been verified on a clean clone.
 
 ## Missing files
 
@@ -46,61 +42,120 @@ This repository does not contain the game or its build dependencies. You must su
 
 | Path | What it is | Where to get it |
 | --- | --- | --- |
-| `nx1/` | Game dump (`.xex` + assets) | Internet Archive v1.1.1.14 build |
-| `generated/` | C++ from ReXGlue | Run ReXGlue against your dump |
-| `thirdparty/` | Vendored trees | Restore via `git submodule update --init --recursive` |
-| Discord SDK | Rich presence | Discord Social SDK |
+| `nx1/` | Game dump (`.xex` + assets) | The Dec 18 2011 prototype dump (see below) |
+| `generated/` | C++ from ReXGlue | Produced by running ReXGlue against your dump |
+| `thirdparty/` | Vendored trees | `tools\setup-thirdparty.ps1` |
 
-Earlier or incomplete dumps are missing bulk data for several maps. Place the files from the v1.1.1.14 build in `nx1/` before building or running.
+### Game dump
+
+The dump is the **Dec 18 2011 prototype build** of Call of Duty: Future Warfare. Other or partial
+dumps are missing bulk data for several maps, which is why some maps will not load.
+
+Place the dump contents in `nx1/`. Either of these layouts works:
+
+```
+nx1\5-nx1mp_demo.xex              <- flat
+nx1\NX1\5-nx1mp_demo.xex          <- one nested folder
+```
+
+The runtime auto-detects both and mounts whichever folder holds the `.xex` as the volume root.
 
 ---
 
 ## Building
 
-This is not a one-command build. You need three things before CMake will succeed:
-
-1. **Game dump** in `nx1/` (your extracted ISO or the Internet Archive v1.1.1.14 files).
-2. **Generated C++** in `generated/` (produced by running ReXGlue against the dump).
-3. **Vendored third-party trees** in `thirdparty/` (gitignored; restore via `git submodule update --init --recursive` from the committed `.gitmodules`).
-
 ### Prerequisites
 
 - Windows
-- CMake 3.25+
-- Clang 20.1.8 (MSVC ABI) — the project is configured for this toolchain
-- A full NX1 dump (`.xex` + asset files)
+- **Clang 20.1.8 (MSVC ABI)** — `winget install LLVM.LLVM`. This is required, not optional: the SDK
+  refuses to configure with MSVC (`rexglue-sdk/CMakeLists.txt` errors out on any non-Clang compiler).
+- Visual Studio 2022 Build Tools (headers, Windows SDK, and the MSVC runtime Clang links against).
+- CMake 3.25+ and Ninja (both ship with the VS Build Tools).
+- A full NX1 dump in `nx1/`.
 
 ### Steps
 
-1. Clone the repo and enter it:
-   ```
-   git clone https://github.com/jxnplays/NX1-Reborn.git
-   cd NX1-Reborn
-   ```
+**1. Clone.**
 
-2. Place your dump in `nx1/`. The expected layout is the raw dump contents (not a nested folder).
+```
+git clone https://github.com/jxnplays/NX1-Reborn.git
+cd NX1-Reborn
+```
 
-3. Initialize thirdparty submodules. The URLs and commits are recorded in the committed `.gitmodules` files:
-   ```
-   git submodule update --init --recursive
-   ```
-   If needed, initialize from the vendored projects:
-   ```
-   cd rexglue-sdk && git submodule update --init --recursive && cd ..
-   cd XenosRecomp && git submodule update --init --recursive && cd ..
-   ```
+**2. Place your dump in `nx1/`** (either layout shown above).
 
-4. Run ReXGlue against your dump to produce `generated/`. The SDK is vendored under `rexglue-sdk/`. Follow the ReXGlue documentation for generating the C++ from your `.xex`.
+**3. Restore `thirdparty/`.**
 
-5. Configure and build the multiplayer target:
-   ```
-   cmake -S nx1_mp -B out/build/win-amd64-release -G Ninja -DCMAKE_BUILD_TYPE=Release
-   cmake --build out/build/win-amd64-release
-   ```
+This is **not** `git submodule update` — this repo has no top-level `.gitmodules`, and
+`rexglue-sdk/` + `XenosRecomp/` are vendored copies without their own `.git` directories. Use the
+script, which pulls the correct upstream trees and repairs Windows symlink checkouts:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\setup-thirdparty.ps1
+```
+
+It restores 27 submodules from upstream ReXGlue commit `e8ce24f` (the commit this fork's vendored
+SDK was derived from), plus 11 vendored directories that appear in no `.gitmodules` at all
+(`disasm`, `dxbc`, `renderdoc`, and others), and fixes 15 symlinks that git otherwise checks out as
+one-line text stubs. Expect it to take a few minutes and a few GB.
+
+**4. Build ReXGlue** (the code generator):
+
+```
+cd rexglue-sdk
+cmake --preset win-amd64
+cmake --build --preset win-amd64-release --target rexglue
+cd ..
+```
+
+> Note the preset names: `win-amd64` to configure, `win-amd64-release` to build.
+
+**5. Generate `generated/`** from your dump:
+
+```
+cd nx1_mp
+..\rexglue-sdk\out\win-amd64\Release\rexglue.exe -f codegen nx1_mp_manifest.toml
+```
+
+This takes a few minutes and emits ~84 MB of C++. It writes
+`nx1_mp\generated\5-nx1mp_demo\`, which step 6 compiles.
+
+**6. Build the multiplayer target.**
+
+`REXSDK_DIR` is required — it is a CMake cache variable, and setting it as an environment variable
+is silently ignored.
+
+```
+cd nx1_mp
+cmake --preset win-amd64-release -DREXSDK_DIR="<absolute path to your clone>/rexglue-sdk"
+cmake --build --preset win-amd64-release --target nx1_mp
+```
+
+The executable lands at `nx1_mp\out\build\win-amd64-release\nx1_mp.exe`.
 
 The single-player target (`nx1_sp`) follows the same pattern.
 
-Builds land in `out/build/win-amd64-release/`. Discord rich presence is optional and requires the Discord Social SDK in a `Discord SDK/` folder at the repo root.
+### Running
+
+Launch straight into a map:
+
+```powershell
+.\tools\Start-Nx1MpDevmap.ps1 -Map mp_nx_deadzone -NoOcclusionQuery
+```
+
+Use that script rather than passing `--cl` yourself: a multi-word command line passed via
+`Start-Process -ArgumentList` gets split on spaces and silently truncated, so `+devmap` never
+reaches the guest and the game quietly loads the default map instead.
+
+Maps with a real `.ff` bulk half load (15 of them, e.g. `mp_nx_deadzone`). Maps that exist only as
+`.ffm` are not visible to the runtime.
+
+If you run several emulators on one machine, set `systemlink_port_offset` in the generated
+`nx1_mp.toml` (e.g. `30000`). The default System Link UDP port 1000 is often already taken, and the
+guest shuts down shortly after boot if the bind fails.
+
+Discord rich presence is optional and requires the Discord Social SDK in a `Discord SDK/` folder at
+the repo root. Without it the build still succeeds and the feature is simply disabled.
 
 ---
 

@@ -20,6 +20,7 @@
 #include "d3d9_resources.h"
 #include "d3d9_shaders.h"
 #include "guest_d3d.h"
+#include "nx1_overlay.h"
 
 REXCVAR_DEFINE_BOOL(nx1_d3d9, false, "GPU",
                     "Render NX1 through a native D3D9 device instead of the Xenia PM4 backend. "
@@ -74,6 +75,9 @@ HWND FindGameWindow() {
 namespace {
 
 LRESULT CALLBACK Nx1D3d9WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+  if (Overlay::HandleMessage(hwnd, msg, wparam, lparam)) {
+    return 0;
+  }
   if (msg == WM_DESTROY) {
     PostQuitMessage(0);  // unblock the owning thread's GetMessage loop
     return 0;
@@ -187,6 +191,8 @@ bool Renderer::Initialize(HWND reference_window) {
   current_rt_width_ = pp.BackBufferWidth;
   current_rt_height_ = pp.BackBufferHeight;
   REXGPU_INFO("nx1_d3d9: device created ({}x{})", pp.BackBufferWidth, pp.BackBufferHeight);
+
+  Overlay::Initialize(hwnd, device_);
 
   if (!ShaderCache::Get().Initialize(device_)) {
     REXGPU_ERROR("nx1_d3d9: shader cache unavailable; every draw would miss");
@@ -324,6 +330,8 @@ void Renderer::Present() {
     if (src) src->Release();
     if (back) back->Release();
   }
+
+  Overlay::Render(static_cast<int>(backbuffer_width_), static_cast<int>(backbuffer_height_));
 
   device_->PresentEx(nullptr, nullptr, nullptr, nullptr, 0);
 
